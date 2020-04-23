@@ -1,0 +1,18 @@
+Source: arbiter2
+Section: admin
+Priority: optional
+Maintainer: Michael Gutteridge <mrg@fredhutch.org>
+Build-Depends: debhelper (>= 10)
+Standards-Version: 4.1.2
+Homepage: https://gitlab.chpc.utah.edu/arbiter2/arbiter2
+#Vcs-Git: https://anonscm.debian.org/git/collab-maint/arbiter2.git
+#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/arbiter2.git
+
+Package: arbiter2
+Architecture: any
+Depends: python3, python3-matplotlib, python3-toml, python3-requests
+Description: A daemon that uses cgroups to monitor and manage user behavior on login nodes
+ Arbiter2 monitors and protects interactive nodes with cgroups. It records the activity on nodes, automatically sets limits on the resources available to each user, and notifies users and administrators by email when resource quotas are changed. A technical paper has been written on the program and is available on the ACM Digital Library.
+ Arbiter2 is written by the University of Utah Center for High Performance Computing.
+
+
