@@ -17,5 +17,15 @@ override_dh_auto_install:
 	cd $(CURDIR) && cp etc/config.toml debian/arbiter2/etc/arbiter/config.toml.ex
 	cd $(CURDIR) && cp etc/integrations.py debian/arbiter2/var/lib/arbiter
 	cd $(CURDIR) && cp etc/*email_template.txt debian/arbiter2/var/lib/arbiter
+	cd $(CURDIR) && cp -r tools/logsearch debian/arbiter2/var/lib/arbiter
+	cd $(CURDIR) && \
+		cp tools/allusers_corraller.sh \
+			tools/arbstatus.py \
+			tools/badsignal.py \
+			tools/cfgparser.py \
+			tools/make_sudoers.py \
+			tools/test_email.py \
+			tools/user_corraller.sh \
+		debian/arbiter2/var/lib/arbiter
 	dh_install
 	dh_installinit

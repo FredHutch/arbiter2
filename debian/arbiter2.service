@@ -15,8 +15,7 @@ After=sendmail.service network.target network-online.target
 
 # -- User Settings -- #
 # Run as unprivileged arbiter for security
-# User=arbiter
-User=root
+User=arbiter
 # Enable cgroup accounting by running in user.slice, instead of system.slice (default with Slice=)
 # TODO: Lookup uid of arbiter and put it here. Systemd's %U variable may work for system accounts
 Slice=user-0.slice
