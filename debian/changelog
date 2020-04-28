@@ -1,3 +1,10 @@
+arbiter2 (1.3.4-1) bionic; urgency=medium
+
+  * Update packaging
+  * Fix problem with filename globbing in logdb
+
+ -- Michael Gutteridge <mrg@fredhutch.org>  Mon, 27 Apr 2020 19:44:24 -0700
+
 arbiter2 (1.3.3-5) bionic; urgency=medium
 
   * Fix arbiter2 service unit file
