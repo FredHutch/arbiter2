@@ -26,8 +26,8 @@ def rotated_filename(filename, days, datefmt):
     latest_log_dt = datetime(MINYEAR, 1, 1)
     fglob = filename.replace("{}", "*")
     # Get all dbs in directory and create datetime obj from names
-    path = pathlib.Path(filename).parent
-    for db in path.glob(fglob):
+    path = pathlib.Path(fglob)
+    for db in pathlib.Path(path.parent).expanduser().glob(path.name):
         try:
             found_date = re.search(fglob.replace("*", "(.*)"), db.name).group(1)
             found_datetime = datetime.strptime(found_date, datefmt)
