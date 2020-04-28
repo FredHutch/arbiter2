@@ -21,9 +21,9 @@ set -e
 
 case "$1" in
     purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
-      rm /etc/sudoers.d/arbiter2
-      userdel -f arbiter
-      groupdel arbitors
+      rm /etc/sudoers.d/arbiter2 || true
+      userdel -f arbiter || true
+      groupdel arbitors || true
     ;;
 
     *)
