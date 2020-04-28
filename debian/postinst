@@ -24,6 +24,7 @@ case "$1" in
       -u arbiter -g arbitors > /etc/sudoers.d/arbiter2
     chmod 0440 /etc/sudoers.d/arbiter2
     chown arbiter:arbitors /var/log/arbiter
+    chown arbiter:arbitors /var/spool/arbiter
     ;;
   abort-upgrade|abort-remove|abort-deconfigure)
     ;;
