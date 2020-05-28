@@ -10,13 +10,14 @@ clean: ;
 override_dh_auto_install:
 	cd $(CURDIR) && mkdir -p debian/arbiter2/usr/sbin
 	cd $(CURDIR) && mkdir -p debian/arbiter2/etc/arbiter
+	cd $(CURDIR) && mkdir -p debian/arbiter2/etc/arbiter/templates
 	cd $(CURDIR) && mkdir -p debian/arbiter2/var/log/arbiter
 	cd $(CURDIR) && mkdir -p debian/arbiter2/var/spool/arbiter
 	cd $(CURDIR) && mkdir -p debian/arbiter2/var/lib/arbiter
 	cd $(CURDIR) && cp -r arbiter debian/arbiter2/usr/sbin
 	cd $(CURDIR) && cp etc/config.toml debian/arbiter2/etc/arbiter/config.toml.ex
 	cd $(CURDIR) && cp etc/integrations.py debian/arbiter2/var/lib/arbiter
-	cd $(CURDIR) && cp etc/*email_template.txt debian/arbiter2/var/lib/arbiter
+	cd $(CURDIR) && cp etc/*email_template.txt debian/arbiter2/etc/arbiter/templates
 	cd $(CURDIR) && cp -r tools/logsearch debian/arbiter2/var/lib/arbiter
 	cd $(CURDIR) && \
 		cp tools/allusers_corraller.sh \
