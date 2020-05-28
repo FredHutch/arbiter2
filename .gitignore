@@ -35,3 +35,15 @@ logs/
 # (ignore etc/sitename/)
 etc/*/*
 *.exitfile
+
+# Extraneous Debian Packaging Files
+debian/.debhelper/
+debian/arbiter2.debhelper.log
+debian/arbiter2.postinst.debhelper
+debian/arbiter2.postrm.debhelper
+debian/arbiter2.prerm.debhelper
+debian/arbiter2.substvars
+debian/arbiter2/
+debian/debhelper-build-stamp
+debian/files
+
