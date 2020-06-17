@@ -1,5 +1,18 @@
 # Changelog
 
+## Version 1.3.5
+
+**Changes:**
+
+ - calculate memory usage more accurately (#2)
+ - remove user slice from systemd unit file (#1)
+ 
+## Version 1.3.4
+
+**Changes:**
+
+ - update packaging
+
 ## Version 1.3.3
 
 **Changes:**
