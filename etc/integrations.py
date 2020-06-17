@@ -66,7 +66,7 @@ def warning_email_body(proc_table, username, realname, hostname,
         The mem quota expressed in human terms. e.g. "8.0 GB"
     """
     # Prepare a message body using the template
-    with open("../etc/warning_email_template.txt", "r") as template:
+    with open("/etc/arbiter/templates/warning_email_template.txt", "r") as template:
         message = template.read()
     message = message.format(
         username,
@@ -122,7 +122,7 @@ def nice_email_body(username, realname, status_group, timestamp):
         A nicely formatted timestamp that indicates when the user started to be
         bad.
     """
-    with open("../etc/nice_email_template.txt", "r") as template:
+    with open("/etc/arbiter/templates/nice_email_template.txt", "r") as template:
         message = template.read()
     return message.format(
         username,
@@ -172,7 +172,7 @@ def overall_high_usage_body(hostname, iso_timestamp, total_cores,
     top_users: []
         A list of the top user.User() that are using the most of the machine.
     """
-    with open("../etc/overall_high_usage_email_template.txt", "r") as template:
+    with open("/etc/arbiter/templates/overall_high_usage_email_template.txt", "r") as template:
         message = template.read()
     # Prepare all the information about users
     user_text = ""
