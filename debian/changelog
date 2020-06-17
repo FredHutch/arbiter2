@@ -1,3 +1,11 @@
+arbiter2 (1.3.5-1) bionic; urgency=medium
+
+  * fix service startup
+  * correct memory handling
+  * change paths for integrations
+
+ -- Michael Gutteridge <mrg@fredhutch.org>  Wed, 17 Jun 2020 11:24:54 -0700
+
 arbiter2 (1.3.4-2) bionic; urgency=medium
 
   * Move email templates
