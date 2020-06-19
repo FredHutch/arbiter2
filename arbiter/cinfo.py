@@ -34,6 +34,7 @@ logger = logging.getLogger("arbiter." + __name__)
 # The controller used to check whether a cgroup exists and to get pids from.
 default_controller = "cpu,cpuacct"
 
+
 def threads_per_core():
     """
     Returns the number of threads per core. Includes hyperthreading as a
@@ -208,7 +209,7 @@ class SystemdCGroup():
 
     def mem_usage(self, memsw=True, kmem=False):
         """
-        Gets the memory utilization of a cgroup
+        Returns the memory utilization of a cgroup
 
         memsw: bool
             Unused
@@ -222,7 +223,10 @@ class SystemdCGroup():
         with open(self.controller_path("memory", "memory.stat")) as f:
             memory_stat = f.read().strip()
             memory_stat = dict(x.split(" ") for x in memory_stat.split("\n"))
-        mem_usage = int(memory_stat['total_rss']) + int(memory_stat['total_cache'])
+        mem_usage = (
+            int(memory_stat['total_rss']) +
+            int(memory_stat['total_active_file'])
+        )
         return mem_usage
 
     def pids(self):
@@ -242,7 +246,7 @@ class SystemdCGroup():
         """
         with open(self.controller_path("cpuacct", "cpu.cfs_quota_us")) as quota:
             with open(self.controller_path("cpuacct",
-                                          "cpu.cfs_period_us")) as period:
+                                           "cpu.cfs_period_us")) as period:
                 return (float(quota.readline().strip()) /
                         float(period.readline().strip())) * 100
 
@@ -414,7 +418,6 @@ class SystemdCGroupInstance(SystemdCGroup):
                 / total_mem * 100
             )
         }
-
 
     def __truediv__(self, other):
         """
@@ -627,7 +630,7 @@ def current_cgroups(parent="user.slice", controller=default_controller):
     >>> current_cgroups("user.slice/user-1010.slice")
     []
     """
-    glob_str= "/sys/fs/cgroup/{}/{}/**/*.slice".format(controller, parent)
+    glob_str = "/sys/fs/cgroup/{}/{}/**/*.slice".format(controller, parent)
     return [os.path.basename(p) for p in glob.iglob(glob_str, recursive=True)]
 
 
