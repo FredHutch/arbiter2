@@ -82,12 +82,12 @@ if __name__ == "__main__":
                         type=str,
                         help="Sets the directory in which arbiter modules "
                              "are loaded from. Defaults to ../arbiter.",
-                        default="../arbiter",
+                        default="/usr/sbin/arbiter",
                         dest="arbdir")
     parser.add_argument("-g", "--config",
                         type=str,
                         nargs="+",
-                        default=["../etc/config.toml"],
+                        default=["/etc/arbiter/config.toml"],
                         help="The configuration files to use. Configs will be "
                              "cascaded together starting at the leftmost (the "
                              "primary config) going right (the overwriting "
