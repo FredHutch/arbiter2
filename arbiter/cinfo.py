@@ -223,10 +223,7 @@ class SystemdCGroup():
         with open(self.controller_path("memory", "memory.stat")) as f:
             memory_stat = f.read().strip()
             memory_stat = dict(x.split(" ") for x in memory_stat.split("\n"))
-        mem_usage = (
-            int(memory_stat['total_rss']) +
-            int(memory_stat['total_active_file'])
-        )
+        mem_usage = int(memory_stat['total_rss'])
         return mem_usage
 
     def pids(self):
